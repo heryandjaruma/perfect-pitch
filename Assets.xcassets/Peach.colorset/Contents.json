@@ -2,15 +2,15 @@
   "colors" : [
     {
       "color" : {
-        "color-space" : "display-p3",
+        "color-space" : "srgb",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0xD6",
-          "green" : "0xAD",
-          "red" : "0x96"
+          "blue" : "0xAF",
+          "green" : "0xB8",
+          "red" : "0xF9"
         }
       },
-      "idiom" : "ipad"
+      "idiom" : "universal"
     }
   ],
   "info" : {
