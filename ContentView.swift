@@ -10,10 +10,17 @@ struct ContentView: View {
                 .scaledToFit()
                 .aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)
+            VStack {
+                Spacer()
+                Image("PianoHorizontal")
+                    .resizable()
+                    .scaledToFit()
+                    .edgesIgnoringSafeArea(.all)
+            }
+            .edgesIgnoringSafeArea(.all)
             Image("Notes")
                 .scaledToFit()
                 .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
             VStack(spacing: 30) {
                 Image("Title")
                 Spacer()
