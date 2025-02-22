@@ -20,14 +20,14 @@ let package = Package(
             teamIdentifier: "9VBW89A4U3",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .asset("AppIcon"),
-            accentColor: .asset("AccentColor"),
+            appIcon: .placeholder(icon: .mic),
+            accentColor: .presetColor(.yellow),
             supportedDeviceFamilies: [
                 .pad
             ],
             supportedInterfaceOrientations: [
                 .landscapeRight,
-                .landscapeLeft,
+                .landscapeLeft
             ],
             capabilities: [
                 .microphone(purposeString: "Unknown Usage Description")
@@ -38,7 +38,10 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            path: ".",
+            resources: [
+                .process("Resources")
+            ]
         )
     ],
     swiftLanguageVersions: [.version("6")]

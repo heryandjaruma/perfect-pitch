@@ -1,43 +1,37 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
         ZStack {
-            Color("Cream")
-                .ignoresSafeArea()
-            Image("Wall")
-                .resizable()
-                .scaledToFit()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
-            VStack {
-                Spacer()
-                Image("PianoHorizontal")
-                    .resizable()
-                    .scaledToFit()
-                    .edgesIgnoringSafeArea(.all)
-            }
-            .edgesIgnoringSafeArea(.all)
-            Image("Notes")
-                .scaledToFit()
-                .aspectRatio(contentMode: .fill)
+            MainMenuBackgroundComponent()
+
             VStack(spacing: 30) {
                 Image("Title")
                 Spacer()
                     .frame(height: 20)
                 Button(action: {}) {
-                    Image("DoIHavePerfectPitch")
+                    Text("Do I Have Perfect Pitch?")
+                        .font(.extraBeigeMedium)
+                        .foregroundStyle(Color("Red"))
                 }
                 Button(action: {}) {
-                    Image("Learn")
+                    Text("Learn")
+                        .font(.extraBeigeMedium)
+                        .foregroundStyle(Color("Red"))
                 }
                 Button(action: {}) {
-                    Image("HowTo")
+                    Text("How To")
+                        .font(.extraBeigeMedium)
+                        .foregroundStyle(Color("Red"))
                 }
                 Button(action: {}) {
-                    Image("About")
+                    Text("About")
+                        .font(.extraBeigeMedium)
+                        .foregroundStyle(Color("Red"))
                 }
             }
         }
     }
+    
 }
