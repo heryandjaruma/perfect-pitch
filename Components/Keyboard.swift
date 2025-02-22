@@ -23,15 +23,21 @@ struct Keyboard: View {
             .position(x: screenWidth / 2 , y: screenHeight * 4 / 5)
             .offset(x: 0, y: screenHeight / 5 / 2)
             
-            ZStack {
-                ForEach(blackKeys) { key in
-                    if let posMultiplier = blackKeysMultipliers[key.name] {
-                        BlackKey(pianoKey: key)
-                            .position(x: keyWidth * posMultiplier, y: screenHeight * 4 / 5)
-                            .offset(x: 0, y: screenHeight / 5 / 2 * 0.65)
-                    }
+            ForEach(blackKeys) { key in
+                if let posMultiplier = blackKeysMultipliers[key.name] {
+                    BlackKey(pianoKey: key)
+                        .position(x: keyWidth * posMultiplier, y: screenHeight * 4 / 5)
+                        .offset(x: 0, y: screenHeight / 5 / 2 * 0.65)
                 }
             }
+            
+
+            Image("BookStand")
+                .resizable()
+                .frame(width: screenWidth, height: screenHeight / 5 * 2)
+                .position(x: screenWidth / 2, y: screenHeight * 3 / 5)
+                .scaleEffect(1.02)
+
         }
         .edgesIgnoringSafeArea(.all)
     }

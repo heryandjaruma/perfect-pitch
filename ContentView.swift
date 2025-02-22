@@ -10,6 +10,9 @@ struct ContentView: View {
                 
                 VStack(spacing: 30) {
                     Image("Title")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: UIScreen.main.bounds.height / 5)
                     Spacer()
                         .frame(height: 20)
                     
@@ -21,11 +24,6 @@ struct ContentView: View {
                             .font(.extraBeigeMedium)
                             .foregroundStyle(Color("Red"))
                     })
-                    Button(action: {}) {
-                        Text("Learn")
-                            .font(.extraBeigeMedium)
-                            .foregroundStyle(Color("Red"))
-                    }
                     Button(action: {}) {
                         Text("How To")
                             .font(.extraBeigeMedium)

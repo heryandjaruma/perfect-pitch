@@ -12,12 +12,22 @@ struct StoryView: View {
         ZStack {
             BackgroundWall()
             
+            /// BACK
             HStack(alignment: .top) {
                 BackButton(backText: "Do I Have Perfect Pitch")
-                    .padding(.leading, 16) // Add some padding from the left edge
-                    .padding(.top, 16)    // Add some padding from the top edge
+                    .padding(.leading, 16)
+                    .padding(.top, 16)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            
+            Keyboard()
+            
+            /// BOOK STAND
+            VStack() {
+                ZStack {
+
+                }
+            }
         }
     }
 }

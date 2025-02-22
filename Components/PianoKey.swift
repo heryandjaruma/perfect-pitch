@@ -37,11 +37,12 @@ struct PianoKey: View {
                     width: (screenWidth / NUMBER_OF_WHITE_KEYS) * widthRatio,
                     height: (screenHeight / 5) * heightRatio
                 )
-                .overlay(
+                .overlay(alignment: .bottom) {
                     Text(pianoKey.name)
                         .font(.tangoSansSmall)
                         .foregroundColor(Color(textColor))
-                )
+                        .padding([.bottom], 20)
+                }
         }
     }
 }
