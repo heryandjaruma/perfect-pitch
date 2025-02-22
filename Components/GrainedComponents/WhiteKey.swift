@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  WhiteKey.swift
 //  Perfect Pitch
 //
 //  Created by Heryan Djaruma on 22/02/25.
@@ -8,29 +8,19 @@
 import SwiftUI
 
 struct WhiteKey: View {
-    private var screenWidth: CGFloat = UIScreen.main.bounds.width
-    private var screenHeight: CGFloat = UIScreen.main.bounds.height
-    
-    private var NUMBER_OF_WHITE_KEYS: CGFloat = 14
-    
-    private var pianoKey: PianoKey
-    
-    init(pianoKey: PianoKey) {
-        self.pianoKey = pianoKey
-    }
+    var pianoKey: PianoKeyModel
     
     var body: some View {
-        Image("WhiteKey")
-            .resizable()
-            .frame(width: screenWidth / NUMBER_OF_WHITE_KEYS) // size of one white key relative to screen
-            .frame(height: screenHeight / 5) // 1/5 of a height screen
-            .overlay(
-                Text(pianoKey.name)
-                    .foregroundColor(Color("DarkBlue"))
-            )
+        PianoKey(
+            pianoKey: pianoKey,
+            keyColor: "WhiteKey",
+            textColor: "DarkBlue",
+            widthRatio: 1.0,
+            heightRatio: 1.0
+        )
     }
 }
 
 #Preview {
-    WhiteKey(pianoKey: PianoKey(name: "C4", frequency: 261.63))
+    WhiteKey(pianoKey: PianoKeyModel(name: "C4", frequency: 261.63))
 }

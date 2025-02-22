@@ -8,6 +8,8 @@
 import SwiftUI
 
 extension Font {
+    
+    /// DISPLAY FONT
     public static var extraBeigeBig: Font { get {
         Font.custom("Extra-Beige", size: 70)
     }}
@@ -18,5 +20,14 @@ extension Font {
     
     public static var extraBeigeSmall: Font { get {
         Font.custom("Extra-Beige", size: 28)
+    }}
+    
+    /// TEXT FONT
+    public static var tangoSansBig: Font { get {
+        Font.custom("TangoSans", size: 30)
+    }}
+    
+    public static var tangoSansSmall: Font { get {
+        Font.custom("TangoSans", size: 20)
     }}
 }
