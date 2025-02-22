@@ -12,13 +12,7 @@ struct MainMenuBackgroundComponent: View {
     private var screenWidth: CGFloat = UIScreen.main.bounds.width
     var body: some View {
         ZStack {
-            Color("Cream")
-                .ignoresSafeArea()
-            Image("Wall")
-                .resizable()
-                .scaledToFit()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
+            BackgroundWall()
             VStack {
                 Spacer()
                 Image("PianoHorizontal")
