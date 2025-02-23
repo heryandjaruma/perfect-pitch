@@ -8,9 +8,21 @@
 import SwiftUI
 
 struct StoryView: View {
+    
+    private let screenWidth = UIScreen.main.bounds.width
+    private let screenHeight = UIScreen.main.bounds.height
+    
     var body: some View {
         ZStack {
             BackgroundWall()
+            
+            Keyboard()
+                .zIndex(0)
+            
+            StoryBoard()
+                .frame(width: screenWidth * 0.95, height: screenHeight / 5 * 3 * 0.95)
+                .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 5 * 2)
+                .zIndex(1)
             
             /// BACK
             HStack(alignment: .top) {
@@ -19,15 +31,10 @@ struct StoryView: View {
                     .padding(.top, 16)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+            .zIndex(2)
             
-            Keyboard()
             
-            /// BOOK STAND
-            VStack() {
-                ZStack {
-
-                }
-            }
+            
         }
     }
 }
