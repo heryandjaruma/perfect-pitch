@@ -48,12 +48,12 @@ let blackKeysMultipliers: [String: CGFloat] = [
     "D#4": 2,
     "F#4": 4,
     "G#4": 5,
-    "A#4": 6,
+    "Bb4": 6,
     "C#5": 8,
     "D#5": 9,
     "F#5": 11,
     "G#5": 12,
-    "A#5": 13
+    "Bb5": 13
 ]
 
 #Preview {

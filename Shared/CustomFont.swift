@@ -19,7 +19,7 @@ extension Font {
     }}
     
     public static var extraBeigeSmall: Font { get {
-        Font.custom("Extra-Beige", size: 28)
+        Font.custom("Extra-Beige", size: 26)
     }}
     
     /// TEXT FONT

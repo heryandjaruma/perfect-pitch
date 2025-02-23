@@ -39,13 +39,13 @@ let blackKeys: [PianoKeyModel] = [
 
     PianoKeyModel(name: "F#4", frequency: 369.99),
     PianoKeyModel(name: "G#4", frequency: 415.30),
-    PianoKeyModel(name: "A#4", frequency: 466.16),
+    PianoKeyModel(name: "Bb4", frequency: 466.16),
     
     PianoKeyModel(name: "C#5", frequency: 554.37),
     PianoKeyModel(name: "D#5", frequency: 622.25),
 
     PianoKeyModel(name: "F#5", frequency: 739.99),
     PianoKeyModel(name: "G#5", frequency: 830.61),
-    PianoKeyModel(name: "A#5", frequency: 932.33)
+    PianoKeyModel(name: "Bb5", frequency: 932.33)
 ]
 
