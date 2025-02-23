@@ -11,23 +11,12 @@ struct StoryBoard<Content: View>: View {
     
     let content: Content
     
-    private let screenWidth = UIScreen.main.bounds.width
-    private let screenHeight = UIScreen.main.bounds.height
-    
     init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
     
     var body: some View {
-        HStack(alignment: .bottom) {
-            Button(action: {
-                
-            }) {
-                Image("PrevButton")
-                    .resizable()
-                    .scaledToFit()
-            }
-            .frame(width: screenWidth / 30 * 4)
+        HStack {
             ZStack {
                 Rectangle()
                     .fill(.white)
@@ -36,14 +25,7 @@ struct StoryBoard<Content: View>: View {
                     .shadow(radius: 5)
                 self.content
             }
-            Button(action: {
-                
-            }) {
-                Image("NextButton")
-                    .resizable()
-                    .scaledToFit()
-            }
-            .frame(width: screenWidth / 30 * 4)
+
         }
     }
 }

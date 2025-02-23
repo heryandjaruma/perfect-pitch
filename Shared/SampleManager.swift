@@ -39,8 +39,7 @@ class SampleManager: ObservableObject {
                      "G#5",
                      "A5",
                      "Bb5",
-                     "C6",
-        ]
+                     "C6"]
         for note in notes {
             if let path = Bundle.main.path(forResource: "\(note).mp3", ofType: nil) {
                 let url = URL(fileURLWithPath: path)
