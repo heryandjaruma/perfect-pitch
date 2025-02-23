@@ -19,7 +19,9 @@ struct StoryView: View {
             Keyboard()
                 .zIndex(0)
             
-            StoryBoard()
+            StoryBoard(content: {
+                Text("Hello")
+            })
                 .frame(width: screenWidth * 0.95, height: screenHeight / 5 * 3 * 0.95)
                 .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 5 * 2)
                 .zIndex(1)
@@ -32,8 +34,6 @@ struct StoryView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .zIndex(2)
-            
-            
             
         }
     }

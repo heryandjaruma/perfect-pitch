@@ -7,9 +7,16 @@
 
 import SwiftUI
 
-struct StoryBoard: View {
+struct StoryBoard<Content: View>: View {
+    
+    let content: Content
+    
     private let screenWidth = UIScreen.main.bounds.width
     private let screenHeight = UIScreen.main.bounds.height
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
     
     var body: some View {
         HStack(alignment: .bottom) {
@@ -21,11 +28,14 @@ struct StoryBoard: View {
                     .scaledToFit()
             }
             .frame(width: screenWidth / 30 * 4)
-            Rectangle()
-                .fill(.white)
-                .cornerRadius(10)
-                .opacity(0.75)
-                .shadow(radius: 5)
+            ZStack {
+                Rectangle()
+                    .fill(.white)
+                    .cornerRadius(10)
+                    .opacity(0.75)
+                    .shadow(radius: 5)
+                self.content
+            }
             Button(action: {
                 
             }) {
@@ -39,5 +49,7 @@ struct StoryBoard: View {
 }
 
 #Preview {
-    StoryBoard()
+    StoryBoard(content: {
+        Text("Hello Story Board")
+    })
 }
