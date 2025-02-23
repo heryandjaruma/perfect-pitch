@@ -9,7 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct PianoKey: View {
-    @EnvironmentObject private var sampleManager: SampleManager
+    @EnvironmentObject private var keysManager: KeysManager
     
     private var screenWidth: CGFloat = UIScreen.main.bounds.width
     private var screenHeight: CGFloat = UIScreen.main.bounds.height
@@ -21,8 +21,6 @@ struct PianoKey: View {
     var textColor: String
     var widthRatio: CGFloat
     var heightRatio: CGFloat
-    
-    @State private var isPressed = false
     
     init(pianoKey: PianoKeyModel, keyColor: String, textColor: String, widthRatio: CGFloat, heightRatio: CGFloat) {
         self.pianoKey = pianoKey
@@ -39,8 +37,9 @@ struct PianoKey: View {
                 width: (screenWidth / NUMBER_OF_WHITE_KEYS) * widthRatio,
                 height: (screenHeight / 5) * heightRatio
             )
+            .overlay(keysManager.isKeyPressed(pianoKey.id) ? Color.white.opacity(0.4) : Color.clear)
             .overlay(alignment: .bottom) {
-                if (isPressed) {
+                if keysManager.isKeyPressed(pianoKey.id) {
                     Text(pianoKey.name)
                         .font(.tangoSansSmall)
                         .foregroundColor(Color(textColor))
@@ -50,18 +49,14 @@ struct PianoKey: View {
             }
             .simultaneousGesture(DragGesture(minimumDistance: 0)
                 .onChanged { _ in
-                    if !isPressed {
-                           sampleManager.play(note: pianoKey.id)
-                    }
-                    isPressed = true
+                    keysManager.triggerKey(pianoKey.id)
                 }
-                .onEnded { _ in
-                    isPressed = false
-                })
+            )
     }
+    
 }
 
 #Preview {
     PianoKey(pianoKey: PianoKeyModel(name: "C4", frequency: 111), keyColor: "WhiteKey", textColor: "DarkBlue", widthRatio: 1.0, heightRatio: 1.0)
-        .environmentObject(SampleManager())
+        .environmentObject(KeysManager(sampleManager: SampleManager()))
 }

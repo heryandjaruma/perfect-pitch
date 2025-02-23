@@ -9,8 +9,11 @@ import SwiftUI
 
 struct StartPromptView: View {
     var body: some View {
-        Text("Hello From Start Prompt")
+        Text("Do you have a perfect pitch? Let’s find out!")
             .font(.tangoSansBig)
+            .foregroundStyle(Color("DarkBlue"))
+            .multilineTextAlignment(.center)
+            .padding()
     }
 }
 

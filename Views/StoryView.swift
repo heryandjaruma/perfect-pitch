@@ -13,6 +13,14 @@ struct StoryView: View {
     private let screenHeight = UIScreen.main.bounds.height
     
     @State private var currentSceneId: String = "StartPrompt"
+    @StateObject private var sampleManager: SampleManager
+    @StateObject private var keysManager: KeysManager
+    
+    init() {
+        let sampleMgr = SampleManager()
+        self._sampleManager = StateObject(wrappedValue: sampleMgr)
+        self._keysManager = StateObject(wrappedValue: KeysManager(sampleManager: sampleMgr))
+    }
     
     private var currentScene: SceneModel? {
         scenes.first { $0.id == currentSceneId }
@@ -35,6 +43,7 @@ struct StoryView: View {
                 .zIndex(2)
             
         }
+        .environmentObject(keysManager)
     }
     
     private var sceneContent: some View {
@@ -64,7 +73,9 @@ struct StoryView: View {
     
     private func prevButton(for scene: SceneModel) -> some View {
         Button(action: {
-            // TODO remove/add logic
+            if let prevSceneId = scene.choices["prev"] {
+                currentSceneId = prevSceneId
+            }
         }) {
             Image("PrevButton")
                 .resizable()

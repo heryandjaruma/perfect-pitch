@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Keyboard: View {
     private let screenWidth = UIScreen.main.bounds.width
-    private let keyWidth = UIScreen.main.bounds.width / 15 // Width of each white key
+    private let keyWidth = UIScreen.main.bounds.width / 15
     private let screenHeight = UIScreen.main.bounds.height
     
     var body: some View {
@@ -30,7 +30,6 @@ struct Keyboard: View {
                         .offset(x: 0, y: screenHeight / 5 / 2 * 0.65)
                 }
             }
-            
 
             Image("BookStand")
                 .resizable()

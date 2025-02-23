@@ -39,6 +39,7 @@ class SampleManager: ObservableObject {
                      "G#5",
                      "A5",
                      "Bb5",
+                     "B5",
                      "C6"]
         for note in notes {
             if let path = Bundle.main.path(forResource: "\(note).mp3", ofType: nil) {

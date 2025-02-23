@@ -17,7 +17,7 @@ struct SceneModel: Identifiable, Sendable {
 
 let scenes = [
     SceneModel(id: "StartPrompt", name: "Start Scene", description: "", choices: ["next": "TwelveNotesTheory"]),
-    SceneModel(id: "TwelveNotesTheory", name: "12 Notes Theory Scene", description: "", choices: ["next": "NowHearThisNote"]),
+    SceneModel(id: "TwelveNotesTheory", name: "12 Notes Theory Scene", description: "", choices: ["prev": "StartPrompt", "next": "NowHearThisNote"]),
     SceneModel(id: "NowHearThisNote1", name: "Guess 1 Scene", description: "", choices: ["next": "NowHearThisNote2"]),
     SceneModel(id: "NowHearThisNote2", name: "Guess 2 Scene", description: "", choices: ["next": "NowHearThisNote3"]),
     SceneModel(id: "NowHearThisNote3", name: "Guess 3 Scene", description: "", choices: [

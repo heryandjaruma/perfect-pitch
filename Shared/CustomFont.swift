@@ -24,7 +24,11 @@ extension Font {
     
     /// TEXT FONT
     public static var tangoSansBig: Font { get {
-        Font.custom("TangoSans", size: 30)
+        Font.custom("TangoSans", size: 34)
+    }}
+    
+    public static var tangoSansMedium: Font { get {
+        Font.custom("TangoSans", size: 26)
     }}
     
     public static var tangoSansSmall: Font { get {
