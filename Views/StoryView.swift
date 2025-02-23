@@ -15,11 +15,14 @@ struct StoryView: View {
     @State private var currentSceneId: String = "StartPrompt"
     @StateObject private var sampleManager: SampleManager
     @StateObject private var keysManager: KeysManager
+    @StateObject private var gameState: GameState
     
     init() {
         let sampleMgr = SampleManager()
+        let gameStateInstance = GameState()
         self._sampleManager = StateObject(wrappedValue: sampleMgr)
-        self._keysManager = StateObject(wrappedValue: KeysManager(sampleManager: sampleMgr))
+        self._gameState = StateObject(wrappedValue: gameStateInstance)
+        self._keysManager = StateObject(wrappedValue: KeysManager(sampleManager: sampleMgr, gameState: gameStateInstance))
     }
     
     private var currentScene: SceneModel? {
@@ -44,6 +47,16 @@ struct StoryView: View {
             
         }
         .environmentObject(keysManager)
+        .environmentObject(gameState)
+        .onChange(of: keysManager.isCorrect) { newValue in
+            if newValue == true, let scene = currentScene, let nextSceneId = scene.choices["nextHidden"] {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    currentSceneId = nextSceneId
+                    keysManager.isCorrect = nil
+                    keysManager.keyToGuess = nil
+                }
+            }
+        }
     }
     
     private var sceneContent: some View {
@@ -58,6 +71,18 @@ struct StoryView: View {
                             .frame(maxWidth: .infinity)
                     case "TwelveNotesTheory":
                         TwelveNotesTheoryView()
+                            .frame(maxWidth: .infinity)
+                    case "NowHearThisNote1":
+                        NowHearThisNote1View()
+                            .frame(maxWidth: .infinity)
+                    case "NowHearThisNote2":
+                        NowHearThisNote2View()
+                            .frame(maxWidth: .infinity)
+                    case "NowHearThisNote3":
+                        NowHearThisNote3View()
+                            .frame(maxWidth: .infinity)
+                    case "Result":
+                        ResultView()
                             .frame(maxWidth: .infinity)
                     default:
                         Text("")
@@ -82,7 +107,7 @@ struct StoryView: View {
                 .scaledToFit()
         }
         .frame(width: screenWidth / 30 * 4)
-        .opacity(scene.choices["prev"] != nil ? 1.0 : 0.3)
+        .opacity(scene.choices["prev"] != nil ? 1.0 : 0)
         .disabled(scene.choices["prev"] == nil)
     }
     
@@ -97,7 +122,7 @@ struct StoryView: View {
                 .scaledToFit()
         }
         .frame(width: screenWidth / 30 * 4)
-        .opacity(scene.choices["next"] != nil ? 1.0 : 0.3)
+        .opacity(scene.choices["next"] != nil ? 1.0 : 0)
         .disabled(scene.choices["next"] == nil)
     }
     

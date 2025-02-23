@@ -37,9 +37,9 @@ struct PianoKey: View {
                 width: (screenWidth / NUMBER_OF_WHITE_KEYS) * widthRatio,
                 height: (screenHeight / 5) * heightRatio
             )
-            .overlay(keysManager.isKeyPressed(pianoKey.id) ? Color.white.opacity(0.4) : Color.clear)
+            .overlay((keysManager.isKeyPressed(pianoKey.id) && !keysManager.isHiddenTrigger) ? Color.white.opacity(0.4) : Color.clear)
             .overlay(alignment: .bottom) {
-                if keysManager.isKeyPressed(pianoKey.id) {
+                if (keysManager.isKeyPressed(pianoKey.id) && !keysManager.isHiddenTrigger) {
                     Text(pianoKey.name)
                         .font(.tangoSansSmall)
                         .foregroundColor(Color(textColor))
@@ -50,6 +50,7 @@ struct PianoKey: View {
             .simultaneousGesture(DragGesture(minimumDistance: 0)
                 .onChanged { _ in
                     keysManager.triggerKey(pianoKey.id)
+                    keysManager.checkGuess(pianoKey.id)
                 }
             )
     }
@@ -58,5 +59,5 @@ struct PianoKey: View {
 
 #Preview {
     PianoKey(pianoKey: PianoKeyModel(name: "C4", frequency: 111), keyColor: "WhiteKey", textColor: "DarkBlue", widthRatio: 1.0, heightRatio: 1.0)
-        .environmentObject(KeysManager(sampleManager: SampleManager()))
+        .environmentObject(KeysManager(sampleManager: SampleManager(), gameState: GameState()))
 }

@@ -19,7 +19,7 @@ struct TwelveNotesTheoryView: View {
             .padding()
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    keysManager.playSequence(notes, delay: 0.2)
+                    keysManager.playSequence(notes, delay: 0.3)
                 }
             }
     }
@@ -27,5 +27,5 @@ struct TwelveNotesTheoryView: View {
 
 #Preview {
     TwelveNotesTheoryView()
-        .environmentObject(KeysManager(sampleManager: SampleManager()))
+        .environmentObject(KeysManager(sampleManager: SampleManager(), gameState: GameState()))
 }

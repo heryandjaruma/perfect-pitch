@@ -1,5 +1,5 @@
 //
-//  NowHearThisNote1View.swift
+//  NowHearThisNote3View.swift
 //  Perfect Pitch
 //
 //  Created by Heryan Djaruma on 24/02/25.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct NowHearThisNote1View: View {
+struct NowHearThisNote3View: View {
     @EnvironmentObject private var keysManager: KeysManager
     
     @State private var buttonOpacity: Double = 0.0
     @State private var questionOpacity: Double = 0.0
     
-    let KEY_TO_GUESS = "C4"
+    let KEY_TO_GUESS = "D5"
     
     var body: some View {
         VStack(spacing: 30) {
-            Text("Now hear this note")
+            Text("Now what about this?")
                 .font(.tangoSansMedium)
                 .foregroundStyle(Color("DarkBlue"))
             
@@ -30,12 +30,11 @@ struct NowHearThisNote1View: View {
                     keysManager.hiddenTriggerKey(KEY_TO_GUESS)
                 }
             
-            Text("Can you recall which key it belongs to?\n(Press any key you think is correct)")
+            Text("Can you recall which key it belongs to?")
                 .multilineTextAlignment(.center)
                 .font(.tangoSansMedium)
                 .foregroundStyle(Color("DarkBlue"))
                 .opacity(questionOpacity)
-            
             if let isCorrect = keysManager.isCorrect, let note = keysManager.keyToGuess {
                 Text(isCorrect ? "Correct! The note is \(note)" : "Try again!")
                     .font(.tangoSansMedium)
@@ -64,6 +63,6 @@ struct NowHearThisNote1View: View {
 }
 
 #Preview {
-    NowHearThisNote1View()
+    NowHearThisNote3View()
         .environmentObject(KeysManager(sampleManager: SampleManager(), gameState: GameState()))
 }

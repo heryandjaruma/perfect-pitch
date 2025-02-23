@@ -10,16 +10,32 @@ import AVFoundation
 @MainActor
 class KeysManager: ObservableObject {
     @Published private var keyStates: [String: Bool] = [:]
-    private let sampleManager: SampleManager
+    @Published var keyToGuess: String? = nil
+    @Published var isCorrect: Bool? = nil
+    @Published var isHiddenTrigger: Bool = true
     
-    init(sampleManager: SampleManager) {
+    private let sampleManager: SampleManager
+    private let gameState: GameState
+    
+    init(sampleManager: SampleManager, gameState: GameState) {
         self.sampleManager = sampleManager
+        self.gameState = gameState
     }
     
     func triggerKey(_ keyId: String) {
         sampleManager.play(note: keyId)
         keyStates[keyId] = true
+        isHiddenTrigger = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { self.keyStates[keyId] = false }
+    }
+    
+    func hiddenTriggerKey(_ keyId: String) {
+        sampleManager.play(note: keyId)
+        keyStates[keyId] = true
+        isHiddenTrigger = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.keyStates[keyId] = false
+        }
     }
     
     func isKeyPressed(_ keyId: String) -> Bool { keyStates[keyId] ?? false }
@@ -30,6 +46,22 @@ class KeysManager: ObservableObject {
                 self.triggerKey(note)
             }
         }
+    }
+    
+    func playKeyToGuess(_ keyId: String) {
+        hiddenTriggerKey(keyId)
+        keyToGuess = keyId
+        isCorrect = nil
+    }
+        
+    func checkGuess(_ keyId: String) -> Bool {
+        guard let keyToGuess = keyToGuess else { return false }
+        let matches = keyId == keyToGuess
+        isCorrect = matches
+        if !matches {
+            gameState.incrementStoryWrongGuesses()
+        }
+        return matches
     }
     
 }
