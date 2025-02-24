@@ -17,6 +17,8 @@ struct StoryView: View {
     @StateObject private var keysManager: KeysManager
     @StateObject private var gameState: GameState
     
+    @EnvironmentObject private var bgAudioManager: BgAudioManager
+    
     init() {
         let sampleMgr = SampleManager()
         let gameStateInstance = GameState()
@@ -45,6 +47,9 @@ struct StoryView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 .zIndex(2)
             
+        }
+        .onAppear {
+            bgAudioManager.stopBgFadeOut(duration: 0.5)
         }
         .environmentObject(keysManager)
         .environmentObject(gameState)

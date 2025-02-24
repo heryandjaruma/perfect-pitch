@@ -1,6 +1,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var bgAudioManager: BgAudioManager
+    
+    public init() {
+        self._bgAudioManager = StateObject(wrappedValue: BgAudioManager())
+    }
 
     var body: some View {
         
@@ -36,6 +42,10 @@ struct ContentView: View {
                     }
                 }
             }
+        }
+        .environmentObject(bgAudioManager)
+        .onAppear {
+            bgAudioManager.playBg()
         }
     }
 }

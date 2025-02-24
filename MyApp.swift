@@ -2,9 +2,6 @@ import SwiftUI
 
 @main
 struct MyApp: App {
-    
-    @StateObject private var sampleManager = SampleManager()
-    
     init() {
         do {
             try UIFont.registerFonts(withExtension: "ttf")
@@ -16,7 +13,6 @@ struct MyApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(sampleManager)
         }
     }
 }
