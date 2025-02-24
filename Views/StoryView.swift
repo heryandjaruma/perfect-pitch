@@ -49,6 +49,7 @@ struct StoryView: View {
             
         }
         .onAppear {
+            bgAudioManager.clickBtt()
             bgAudioManager.stopBgFadeOut(duration: 0.5)
         }
         .environmentObject(keysManager)

@@ -10,33 +10,42 @@ import Foundation
 
 @MainActor
 class BgAudioManager: ObservableObject {
-    private var bgPlayer: AVAudioPlayer?
+    private var players: [String: AVAudioPlayer] = [:]
     private var fadeTimer: Timer?
     
+    let CHOPIN = "Chopin"
+    let BUTTON = "button"
+    
     init() {
-        preloadBg()
+        preloadBg(audioFile: CHOPIN, fileExt: "mp3")
+        preloadBg(audioFile: BUTTON, fileExt: "wav")
     }
     
-    private func preloadBg() {
-        guard let path = Bundle.main.path(forResource: "Chopin.mp3", ofType: nil) else {
-            print("Background file 'Chopin.mp3' not found in bundle")
+    private func preloadBg(audioFile: String, fileExt: String) {
+        guard let path = Bundle.main.path(forResource: "\(audioFile).\(fileExt)", ofType: nil) else {
+            print("Background file \(audioFile) not found in bundle")
             return
         }
         let url = URL(fileURLWithPath: path)
         do {
-            bgPlayer = try AVAudioPlayer(contentsOf: url)
-            bgPlayer?.prepareToPlay()
+            let player = try AVAudioPlayer(contentsOf: url)
+            player.prepareToPlay()
+            players[audioFile] = player
         } catch {
             print("Error loading Bg Player: \(error)")
         }
     }
 
     func playBg() {
-        self.bgPlayer?.play()
+        self.players[CHOPIN]?.play()
+    }
+    
+    func clickBtt() {
+        self.players[BUTTON]?.play()
     }
     
     func stopBgFadeOut(duration: TimeInterval = 2.0) {
-        guard let player = bgPlayer, player.isPlaying else { return }
+        guard let player = players[CHOPIN], ((players[CHOPIN]?.isPlaying) != nil) else { return }
         
         fadeTimer?.invalidate() // Cancel any existing fade
         let steps = 20
