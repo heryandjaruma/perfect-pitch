@@ -25,16 +25,32 @@ struct ContentView: View {
                             .font(.extraBeigeMedium)
                             .foregroundStyle(Color("Red"))
                     })
-                    Button(action: {}) {
+                    
+                    NavigationLink(destination: HowToView()
+                        .navigationBarBackButtonHidden(true), label: {
                         Text("How To")
                             .font(.extraBeigeMedium)
                             .foregroundStyle(Color("Red"))
-                    }
-                    Button(action: {}) {
+                    })
+                    
+                    NavigationLink(destination: AboutView()
+                        .navigationBarBackButtonHidden(true), label: {
                         Text("About")
                             .font(.extraBeigeMedium)
                             .foregroundStyle(Color("Red"))
+                    })
+                }
+                
+                /// CREDITS
+                VStack {
+                    Spacer()
+                    HStack {
+                        Text("Swift Student Challenge 2025 Submission | © 2025 Heryan Djaruma | heryan.dev")
+                            .foregroundStyle(Color("DarkBlue"))
+                            .fontWeight(.semibold)
+                            .multilineTextAlignment(.center)
                     }
+                    .padding()
                 }
             }
         }

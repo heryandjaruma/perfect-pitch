@@ -12,7 +12,7 @@ struct PracticeView: View {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
-    let SESSION_PRACTICE_GUESS = 3
+    let SESSION_PRACTICE_GUESS = 6
     
     @StateObject private var sampleManager: SampleManager
     @StateObject private var keysManager: KeysManager
