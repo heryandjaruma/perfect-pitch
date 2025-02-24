@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PracticeResultView: View {
     
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var gameState: GameState
     @Binding var showPracticeResult: Bool
     
@@ -44,9 +45,9 @@ struct PracticeResultView: View {
                         Image("PracticeAgainButton")
                     }
                     Button(action: {
-                        
+                        dismiss()
                     }) {
-                        Image("HomeButton")
+                        Image("BackButton")
                     }
                 }
             }
@@ -58,4 +59,5 @@ struct PracticeResultView: View {
 
 #Preview {
     PracticeResultView(showPracticeResult: .constant(false), practiceGuesses: 2, correctGuesses: 1, onRetry: { print("Retry tapped!") })
+        .environmentObject(GameState())
 }

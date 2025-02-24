@@ -49,11 +49,11 @@ struct NowHearThisNote2View: View {
                 }
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.1) {
                 keysManager.playKeyToGuess(KEY_TO_GUESS)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 withAnimation(.easeIn(duration: 0.5)) {
                     questionOpacity = 1.0
                 }

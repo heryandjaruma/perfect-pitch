@@ -44,7 +44,6 @@ struct PracticeView: View {
             if showPracticeResult {
                 PracticeResultView(showPracticeResult: $showPracticeResult, practiceGuesses: self.gameState.practiceGuesses, correctGuesses: self.gameState.correctGuesses, onRetry: selectRandomNote)
                     .environmentObject(gameState)
-                
             } else {
                 Text("A note will be played, and you need to press the appropriate key immediately afterward. Tap the speaker icon to hear it again. The indicator will show the correct key—red means you guessed wrong, and green means you guessed right.")
                     .font(.tangoSansSmall)
@@ -67,7 +66,9 @@ struct PracticeView: View {
         .environmentObject(keysManager)
         .environmentObject(gameState)
         .onAppear {
-            selectRandomNote()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                selectRandomNote()
+            }
         }
         .onChange(of: keysManager.isCorrect) { newValue in
             if let isCorrect = newValue {

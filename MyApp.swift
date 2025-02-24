@@ -3,7 +3,7 @@ import SwiftUI
 @main
 struct MyApp: App {
     init() {
-        do {
+        do { 
             try UIFont.registerFonts(withExtension: "ttf")
         } catch {
             print(error)
