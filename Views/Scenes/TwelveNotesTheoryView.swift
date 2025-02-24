@@ -13,7 +13,7 @@ struct TwelveNotesTheoryView: View {
     
     var body: some View {
         Text("A music scale has 12 notes. Each note has its own name, as shown below. Hear how it sounds!")
-            .font(.tangoSansMedium)
+            .font(.tangoSansBig)
             .foregroundStyle(Color("DarkBlue"))
             .multilineTextAlignment(.center)
             .padding()

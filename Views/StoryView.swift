@@ -84,6 +84,21 @@ struct StoryView: View {
                     case "Result":
                         ResultView()
                             .frame(maxWidth: .infinity)
+                    case "PerfectPitchTheory":
+                        PerfectPitchTheoryView()
+                            .frame(maxWidth: .infinity)
+                    case "PerfectPitchMeaning":
+                        PerfectPitchMeaningView()
+                            .frame(maxWidth: .infinity)
+                    case "RelativePitchTheory":
+                        RelativePitchTheoryView()
+                            .frame(maxWidth: .infinity)
+                    case "MusicIsYourThing":
+                        MusicIsYourThingView()
+                            .frame(maxWidth: .infinity)
+                    case "StartLessonPrompt":
+                        StartLessonPromptView()
+                            .frame(maxWidth: .infinity)
                     default:
                         Text("")
                     }
