@@ -15,9 +15,8 @@ struct StartLessonPromptView: View {
                 .foregroundStyle(Color("DarkBlue"))
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
-            Button(action: {
-                
-            }) {
+            NavigationLink(destination: PracticeView()
+                .navigationBarBackButtonHidden(true)) {
                 Image("BeginPracticeButton")
                     .resizable()
                     .aspectRatio(contentMode: .fit)

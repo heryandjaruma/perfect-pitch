@@ -27,5 +27,5 @@ let scenes = [
     SceneModel(id: "PerfectPitchMeaning", name: "Perfect Pitch Meaning Scene", description: "", choices: ["prev": "PerfectPitchTheory", "next": "RelativePitchTheory"]),
     SceneModel(id: "RelativePitchTheory", name: "Relative Pitch Theory Scene", description: "", choices: ["prev": "PerfectPitchMeaning","next": "MusicIsYourThing"]),
     SceneModel(id: "MusicIsYourThing", name: "Music Your Thing Scene", description: "", choices: ["prev": "PerfectPitchMeaning", "next": "StartLessonPrompt"]),
-    SceneModel(id: "StartLessonPrompt", name: "Start Lesson Scene", description: "", choices: ["prev": "MusicIsYourThing", "next": ""]),
+    SceneModel(id: "StartLessonPrompt", name: "Start Lesson Scene", description: "", choices: ["prev": "MusicIsYourThing"]),
 ]

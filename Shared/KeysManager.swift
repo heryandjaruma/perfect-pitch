@@ -53,6 +53,12 @@ class KeysManager: ObservableObject {
         keyToGuess = keyId
         isCorrect = nil
     }
+    
+    func replayKeyToGuess() {
+        if let keyToGuess = keyToGuess {
+            triggerKey(keyToGuess)
+        }
+    }
         
     func checkGuess(_ keyId: String) -> Bool {
         guard let keyToGuess = keyToGuess else { return false }

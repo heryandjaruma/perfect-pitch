@@ -159,4 +159,5 @@ struct StoryView: View {
 #Preview {
     StoryView()
         .environmentObject(SampleManager())
+        .environmentObject(BgAudioManager())
 }
